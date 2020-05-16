@@ -1,0 +1,31 @@
+<div class="container col-md-6">
+    <br>
+    <h3 class="text-center"><u>Fetch Transactions Info Between Period</u></h3>
+    <br>
+    <form (ngSubmit)="summary()" #form="ngForm">
+        <div class="form-group">
+            <label><strong><em>accountId:</em></strong> </label>
+            <input required type="text" placeholder="Enter ID" #accountIdRef="ngModel" pattern=[0-9]* minlength="04"  maxlength="04"  name="accountId" [(ngModel)]="accountId" class="form-control">
+            <div *ngIf='accountIdRef.errors && accountIdRef.touched' class="alert alert-danger">
+                <div [hidden]='!accountIdRef.errors.required'> Provide Account Id </div>
+                <div *ngIf='accountIdRef.errors.pattern'>accountId should be only numbers</div>
+                <div *ngIf='accountIdRef.errors.minlength'>accountId should be of 04 digits</div>
+                <div *ngIf='accountIdRef.errors.maxlength'>accountId should be of 04 digits</div>
+                </div>
+    
+         </div>
+        
+         <label><strong><em>Start date:</em></strong> </label>
+            <input required type="date" name="StartDate" [(ngModel)]="StartDate" 
+                class="form-control" >
+         <br>
+        <label><strong><em>End date:</em></strong> </label>
+            <input required type="date"  name="EndDate" [(ngModel)]="EndDate"
+                class="form-control">
+
+                <br>
+            
+        <input  type="submit"  value="submit" class="btn btn-success">
+    </form>
+</div>
+
